@@ -25,6 +25,40 @@ NOTA: il timeout previsto per questo esercizio è di 1 secondo per ciascun test
 ATTENZIONE: quando caricate il file assicuratevi che sia nella codifica UTF8
 '''
 
+'''
+def binary_sort(my_list, value):
+    start = 0
+    end = len(my_list) - 1
+    while end >= start:
+        index = (start + end)//2
+        list_value = my_list[index]
+        if(list_value == value):
+            return True
+        elif list_value > value:
+            end = index - 1
+        else:
+            start = index + 1
+    return False
+
+
+def es2(N, ins):
+    # inserite qui il vostro codice
+    luci_accese = list(ins.copy())
+    sequenza = []
+    for bottone in range(N, 0, -1):
+        if binary_sort(luci_accese, bottone) == True:
+            continue
+        sequenza.append(bottone)
+        for luci in range(1, bottone+1):
+            if bottone % luci == 0:
+                if luci in luci_accese:
+                    luci_accese.remove(luci)
+                else:
+                    luci_accese.append(luci)
+        luci_accese.sort()
+    return sorted(sequenza)
+    '''
+
 
 def es2(N, ins):
     # inserite qui il vostro codice
